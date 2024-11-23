@@ -12,8 +12,8 @@ function Searchbar() {
           (response) => response.json()
         );
         // Changes the JSON response to an array of objects
-        const autocomplete = Object.keys(breeds.message).map((breed) =>
-          Object.assign({ name: breed })
+        const autocomplete = Object.keys(breeds.message).map((breed, i) =>
+          Object.assign({ id: i, key: i, name: breed })
         );
         setSuggestions(autocomplete);
       } catch (error) {
