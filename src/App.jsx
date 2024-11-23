@@ -6,6 +6,7 @@ import ImageGet from "./components/ImageGet";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
+  const [api, setApi] = useState("");
 
   return (
     <>
@@ -14,10 +15,11 @@ function App() {
         <h1>DogFinder</h1>
         <section className="placeholder">
           <Searchbar setSearchInput={setSearchInput} />
-          <ImageGet />
+          <ImageGet searchInput={searchInput} />
         </section>
         {/* Second Section for Image display */}
         <ImageDisplay />
+        <button onClick={() => console.log(searchInput)}></button>
       </main>
     </>
   );
