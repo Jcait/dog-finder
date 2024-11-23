@@ -33,6 +33,10 @@ function Searchbar({ setSearchInput }) {
     setSearchInput(string);
   };
 
+  const handleSelect = (string) => {
+    setSearchInput(string.name);
+  };
+
   return (
     <>
       <div className="search-container">
@@ -40,6 +44,7 @@ function Searchbar({ setSearchInput }) {
         <ReactSearchAutocomplete
           items={suggestions}
           onSearch={handleSearch}
+          onSelect={handleSelect}
           showNoResults={false}
           fuseOptions={{ minMatchCharLength: 2 }}
           className="searchbar"
