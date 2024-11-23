@@ -5,9 +5,6 @@ import Searchbar from "./components/Searchbar";
 function App() {
   const [searchInput, setSearchInput] = useState("");
 
-  const handleClick = () => {
-    return "click";
-  };
   return (
     <>
       <main style={{ backgroundColor: "grey", width: "100%" }}>
