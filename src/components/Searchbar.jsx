@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-function Searchbar() {
+function Searchbar({ setSearchInput }) {
   // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
   const [suggestions, setSuggestions] = useState([]);
 
@@ -30,7 +30,7 @@ function Searchbar() {
   //   This fires on every input, like onChange, string tracks the searchbars value
   //   will be used to update state to fetch image
   const handleSearch = (string) => {
-    console.log(string);
+    setSearchInput(string);
   };
 
   return (
