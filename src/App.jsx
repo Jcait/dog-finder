@@ -15,11 +15,11 @@ function App() {
         <h1>DogFinder</h1>
         <section className="placeholder">
           <Searchbar setSearchInput={setSearchInput} />
-          <ImageGet searchInput={searchInput} />
+          <ImageGet searchInput={searchInput} setApi={setApi} />
         </section>
         {/* Second Section for Image display */}
-        <ImageDisplay />
-        <button onClick={() => console.log(searchInput)}></button>
+        <ImageDisplay api={api} />
+        <button onClick={() => console.log(api)}></button>
       </main>
     </>
   );
