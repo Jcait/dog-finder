@@ -1,8 +1,10 @@
-const ImageDisplay = () => {
+import { useState } from "react";
+
+const ImageDisplay = ({ imgSrc }) => {
   return (
     <>
       <section>
-        <img src="public/vite.svg" />
+        <img src={imgSrc} />
       </section>
     </>
   );

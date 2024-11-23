@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-function Searchbar({ setSearchInput }) {
+function Searchbar({ setSearchInput, apiFormat }) {
   // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
   const [suggestions, setSuggestions] = useState([]);
 

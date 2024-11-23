@@ -6,7 +6,17 @@ import ImageGet from "./components/ImageGet";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
-  const [api, setApi] = useState("");
+  const [api, setApi] = useState();
+  const [dogPic, setDogPic] = useState("");
+
+  const apiFormat = async (api) => {
+    try {
+      const image = await fetch(api).then((response) => response.json());
+      setDogPic(image);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -14,11 +24,15 @@ function App() {
         {/* First section is for the search widget */}
         <h1>DogFinder</h1>
         <section className="placeholder">
-          <Searchbar setSearchInput={setSearchInput} />
-          <ImageGet searchInput={searchInput} setApi={setApi} />
+          <Searchbar setSearchInput={setSearchInput} apiFormat={apiFormat} />
+          <ImageGet
+            searchInput={searchInput}
+            setApi={setApi}
+            apiFormat={apiFormat}
+          />
         </section>
         {/* Second Section for Image display */}
-        <ImageDisplay api={api} />
+        <ImageDisplay imgSrc={dogPic.message} />
         <button onClick={() => console.log(api)}></button>
       </main>
     </>
