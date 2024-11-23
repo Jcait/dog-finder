@@ -1,8 +1,4 @@
-const ImageGet = ({ searchInput, setApi, apiFormat }) => {
-  const handleClick = () => {
-    setApi(apiFormat(`https://dog.ceo/api/breed/${searchInput}/images/random`));
-  };
-
+const ImageGet = ({ handleClick }) => {
   return <button onClick={handleClick}> click me</button>;
 };
 

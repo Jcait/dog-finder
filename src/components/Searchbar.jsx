@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-function Searchbar({ setSearchInput, apiFormat }) {
+function Searchbar({ searchInput, setSearchInput, handleClick }) {
   // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
   const [suggestions, setSuggestions] = useState([]);
 
@@ -32,11 +32,15 @@ function Searchbar({ setSearchInput, apiFormat }) {
   const handleSearch = (string) => {
     setSearchInput(string.toLowerCase());
   };
-
-  const handleSelect = (string) => {
+  // Updates the state with hover, letting handle click catch up
+  const onHover = (string) => {
+    console.log(string.name);
     setSearchInput(string.name.toLowerCase());
   };
 
+  const handleSelect = () => {
+    handleClick(searchInput);
+  };
   return (
     <>
       <div className="search-container">
@@ -45,6 +49,7 @@ function Searchbar({ setSearchInput, apiFormat }) {
           items={suggestions}
           onSearch={handleSearch}
           onSelect={handleSelect}
+          onHover={onHover}
           showNoResults={false}
           fuseOptions={{ minMatchCharLength: 2 }}
           className="searchbar"

@@ -4,7 +4,7 @@ const ImageDisplay = ({ imgSrc }) => {
   return (
     <>
       <section>
-        <img src={imgSrc} />
+        <img className="dog-display" src={imgSrc} />
       </section>
     </>
   );
