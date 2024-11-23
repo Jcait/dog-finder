@@ -13,7 +13,11 @@ function Searchbar() {
         );
         // Changes the JSON response to an array of objects
         const autocomplete = Object.keys(breeds.message).map((breed, i) =>
-          Object.assign({ id: i, key: i, name: breed })
+          Object.assign({
+            id: i,
+            key: i,
+            name: breed.replace(/^./, breed[0].toUpperCase()),
+          })
         );
         setSuggestions(autocomplete);
       } catch (error) {
@@ -36,6 +40,8 @@ function Searchbar() {
         <ReactSearchAutocomplete
           items={suggestions}
           onSearch={handleSearch}
+          showNoResults={false}
+          fuseOptions={{ minMatchCharLength: 2 }}
           className="searchbar"
         />
       </div>
