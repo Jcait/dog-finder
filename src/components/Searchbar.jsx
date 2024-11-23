@@ -3,8 +3,10 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 function Searchbar() {
   return (
     <>
-      <h4>Find a dog</h4>
-      <ReactSearchAutocomplete />
+      <div className="search-container">
+        <h4>Find a dog</h4>
+        <ReactSearchAutocomplete className="searchbar" />
+      </div>
     </>
   );
 }
