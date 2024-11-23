@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
 import ImageDisplay from "./components/Imagedisplay";
+import ImageGet from "./components/ImageGet";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -13,7 +14,7 @@ function App() {
         <h1>DogFinder</h1>
         <section className="placeholder">
           <Searchbar setSearchInput={setSearchInput} />
-          <button onClick={() => console.log(searchInput)}>click me</button>
+          <ImageGet />
         </section>
         {/* Second Section for Image display */}
         <ImageDisplay />
