@@ -3,7 +3,6 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 function Searchbar() {
   // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
-  const testItems = [{ name: "Bark" }, { name: "Meow" }, { name: "Quack" }];
   const [suggestions, setSuggestions] = useState([]);
 
   const fetchDogSuggests = async () => {
@@ -14,14 +13,13 @@ function Searchbar() {
       const autocomplete = Object.keys(breeds.message).map((breed) =>
         Object.assign({ name: breed })
       );
-
-      console.log(autocomplete);
-      console.log(breeds);
+      setSuggestions(autocomplete);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
+  //   This fires on every input, like onChange
   const handleSearch = () => {
     fetchDogSuggests();
   };
@@ -31,7 +29,7 @@ function Searchbar() {
       <div className="search-container">
         <h4>Find a dog</h4>
         <ReactSearchAutocomplete
-          items={testItems}
+          items={suggestions}
           onSearch={handleSearch}
           className="searchbar"
         />
