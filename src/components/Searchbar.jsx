@@ -30,11 +30,11 @@ function Searchbar({ setSearchInput }) {
   //   This fires on every input, like onChange, string tracks the searchbars value
   //   will be used to update state to fetch image
   const handleSearch = (string) => {
-    setSearchInput(string);
+    setSearchInput(string.toLowerCase());
   };
 
   const handleSelect = (string) => {
-    setSearchInput(string.name);
+    setSearchInput(string.name.toLowerCase());
   };
 
   return (
