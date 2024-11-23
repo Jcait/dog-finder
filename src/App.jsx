@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
+import ImageDisplay from "./components/Imagedisplay";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -15,18 +16,7 @@ function App() {
           <button onClick={() => console.log(searchInput)}>click me</button>
         </section>
         {/* Second Section for Image display */}
-        <section className="placeholder">
-          <header>DogBreed Placeholder</header>
-          <div
-            style={{
-              width: "100%",
-              backgroundColor: "lightblue",
-              height: "560px",
-            }}
-          >
-            Image Card
-          </div>
-        </section>
+        <ImageDisplay />
       </main>
     </>
   );
