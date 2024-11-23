@@ -11,6 +11,12 @@ function Searchbar() {
       const breeds = await fetch("https://dog.ceo/api/breeds/list/all").then(
         (response) => response.json()
       );
+      const autocomplete = Object.keys(breeds.message).map((breed) =>
+        Object.assign({ name: breed })
+      );
+
+      console.log(autocomplete);
+      console.log(breeds);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -24,7 +30,11 @@ function Searchbar() {
     <>
       <div className="search-container">
         <h4>Find a dog</h4>
-        <ReactSearchAutocomplete items={testItems} className="searchbar" />
+        <ReactSearchAutocomplete
+          items={testItems}
+          onSearch={handleSearch}
+          className="searchbar"
+        />
       </div>
     </>
   );
