@@ -45,9 +45,8 @@ function App() {
           <ImageGet handleClick={handleClick} />
         </section>
         {isError ? null : !dogPic ? null : (
-          <ImageDisplay imgSrc={dogPic.message} />
+          <ImageDisplay imgSrc={dogPic.message} role="displayDog" />
         )}
-        <button onClick={() => console.log(isError)}></button>
       </main>
     </>
   );
