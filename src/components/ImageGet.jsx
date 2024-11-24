@@ -1,5 +1,10 @@
 const ImageGet = ({ handleClick }) => {
-  return <button onClick={handleClick}> click me</button>;
+  return (
+    <button className="image-button" onClick={handleClick}>
+      {" "}
+      Search
+    </button>
+  );
 };
 
 export default ImageGet;

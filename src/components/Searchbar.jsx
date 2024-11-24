@@ -6,6 +6,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
   const [suggestions, setSuggestions] = useState([]);
   const [searched, setSearched] = useState(false);
 
+  // Grabs the API once Searchbar loads and
   useEffect(() => {
     const fetchDogSuggests = async () => {
       try {
@@ -36,7 +37,6 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
   }, [searched, searchInput, handleClick]);
 
   //   This fires on every input, like onChange, string tracks the searchbars value
-  //   will be used to update state to fetch image
   const handleSearch = (string) => {
     setSearchInput(string.toLowerCase());
   };

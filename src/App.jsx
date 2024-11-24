@@ -34,7 +34,6 @@ function App() {
   return (
     <>
       <main>
-        {/* First section is for the search widget */}
         <h1>Find a Dog</h1>
         <section className="searchbar" role="Search">
           <Searchbar
