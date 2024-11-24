@@ -3,6 +3,7 @@ import "./App.css";
 import Searchbar from "./components/Searchbar";
 import ImageDisplay from "./components/Imagedisplay";
 import ImageGet from "./components/ImageGet";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -34,20 +35,24 @@ function App() {
   return (
     <>
       <main>
-        <h1>Find a Dog</h1>
-        <section className="searchbar" role="Search">
-          <Searchbar
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            apiFormat={apiFormat}
-            handleClick={handleClick}
-          />
-          <ImageGet handleClick={handleClick} />
-        </section>
-        {isError ? null : !dogPic ? null : (
-          <ImageDisplay imgSrc={dogPic.message} />
+        <div className="container">
+          <h1 className="title">Find a Dog</h1>
+          <section className="searchbar" role="Search">
+            <Searchbar
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              apiFormat={apiFormat}
+              handleClick={handleClick}
+            />
+            <ImageGet handleClick={handleClick} />
+          </section>
+        </div>
+
+        {isError ? (
+          <ErrorPage />
+        ) : !dogPic ? null : (
+          <ImageDisplay imgSrc={dogPic.message} role="displayDog" />
         )}
-        <button onClick={() => console.log(isError)}></button>
       </main>
     </>
   );

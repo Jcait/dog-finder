@@ -29,6 +29,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     fetchDogSuggests();
   }, []);
 
+  // THis ensures the input is set first in handleSelect before fetching the API
   useEffect(() => {
     if (searched) {
       handleClick(searchInput);
@@ -41,6 +42,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     setSearchInput(string.toLowerCase());
   };
 
+  // triggers when an item in the dropdown is selected
   const handleSelect = (string) => {
     setSearchInput(string.name.toLowerCase());
     setSearched(true);
