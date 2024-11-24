@@ -7,15 +7,18 @@ import ImageGet from "./components/ImageGet";
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [dogPic, setDogPic] = useState("");
-  const [isError, setError] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   // This takes the message received from image api and sets it as the state used for dog pic
   const apiFormat = async (api) => {
     try {
       const image = await fetch(api).then((response) => response.json());
+      if (!image.ok) throw new Error("Request failed");
       setDogPic(image);
     } catch (error) {
-      setError(true);
+      console.log("error");
+      setDogPic("");
+      setIsError(true);
       console.error(error);
     }
   };
@@ -40,8 +43,10 @@ function App() {
           />
           <ImageGet handleClick={handleClick} />
         </section>
-        {isError ? null : <ImageDisplay imgSrc={dogPic.message} />}
-        <button onClick={() => console.log(searchInput)}></button>
+        {isError ? null : !dogPic ? null : (
+          <ImageDisplay imgSrc={dogPic.message} />
+        )}
+        <button onClick={() => console.log(isError)}></button>
       </main>
     </>
   );

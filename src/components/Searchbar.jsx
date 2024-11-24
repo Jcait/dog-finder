@@ -38,7 +38,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     setSearchInput(string.name.toLowerCase());
   };
 
-  const handleSelect = (string) => {
+  const handleSelect = () => {
     handleClick(searchInput);
   };
   return (
@@ -51,6 +51,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           onSelect={handleSelect}
           onHover={onHover}
           showNoResults={false}
+          placeholder="Great Dane, Dalmation, Chihuahua"
           fuseOptions={{ minMatchCharLength: 2 }}
           className="dog-search"
         />
