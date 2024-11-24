@@ -51,8 +51,13 @@ function App() {
         {isError ? (
           <ErrorPage />
         ) : !dogPic ? null : (
-          <ImageDisplay imgSrc={dogPic.message} role="displayDog" />
+          <ImageDisplay
+            imgSrc={dogPic.message}
+            searchInput={searchInput}
+            role="displayDog"
+          />
         )}
+        <button onClick={() => console.log(searchInput)}>CHeck</button>
       </main>
     </>
   );

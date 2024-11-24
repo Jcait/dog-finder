@@ -6,7 +6,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
   const [suggestions, setSuggestions] = useState([]);
   const [searched, setSearched] = useState(false);
 
-  // Grabs the API once Searchbar loads and
+  // Grabs the API once Searchbar loads and turns it into an array of suggestions for the
   useEffect(() => {
     const fetchDogSuggests = async () => {
       try {
@@ -18,7 +18,12 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           Object.assign({
             id: i,
             key: i,
-            name: breed.replace(/^./, breed[0].toUpperCase()),
+            name:
+              breed == "dane"
+                ? "Great Dane"
+                : breed == "germanshepherd"
+                ? "German Shepherd"
+                : breed.replace(/^./, breed[0].toUpperCase()),
           })
         );
         setSuggestions(autocomplete);
@@ -38,13 +43,22 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
   }, [searched, searchInput, handleClick]);
 
   //   This fires on every input, like onChange, string tracks the searchbars value
+  // Unsure if German Shepherd and Great Dane count as sub breeds, Since Great Dane is in the placeholder, I'm making a quick fix for it.
   const handleSearch = (string) => {
-    setSearchInput(string.toLowerCase());
+    string == "German Shepherd"
+      ? setSearchInput("germanshepherd")
+      : string == "Great Dane"
+      ? setSearchInput("dane")
+      : setSearchInput(string.toLowerCase());
   };
 
   // triggers when an item in the dropdown is selected
   const handleSelect = (string) => {
-    setSearchInput(string.name.toLowerCase());
+    string.name == "German Shepherd"
+      ? setSearchInput("germanshepherd")
+      : string.name == "Great Dane"
+      ? setSearchInput("dane")
+      : setSearchInput(string.name.toLowerCase());
     setSearched(true);
   };
 
@@ -60,7 +74,6 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           placeholder="Great Dane, Dalmatian, Chihuahua"
           fuseOptions={{ minMatchCharLength: 2 }}
           className="dog-search"
-          onBlur="test"
         />
       </div>
     </>
