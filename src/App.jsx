@@ -35,16 +35,19 @@ function App() {
   return (
     <>
       <main>
-        <h1 className="title">Find a Dog</h1>
-        <section className="searchbar" role="Search">
-          <Searchbar
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            apiFormat={apiFormat}
-            handleClick={handleClick}
-          />
-          <ImageGet handleClick={handleClick} />
-        </section>
+        <div className="container">
+          <h1 className="title">Find a Dog</h1>
+          <section className="searchbar" role="Search">
+            <Searchbar
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              apiFormat={apiFormat}
+              handleClick={handleClick}
+            />
+            <ImageGet handleClick={handleClick} />
+          </section>
+        </div>
+
         {isError ? (
           <ErrorPage />
         ) : !dogPic ? null : (
