@@ -8,6 +8,7 @@ import ErrorPage from "./components/ErrorPage";
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [dogPic, setDogPic] = useState("");
+  const [dogAltText, setDogAltText] = useState("");
   const [isError, setIsError] = useState(false);
 
   // This takes the message received from image api and sets it as the state used for dog pic
@@ -17,6 +18,7 @@ function App() {
       console.log(image.message);
       if (image.code == "404") throw new Error("Request failed");
       setIsError(false);
+      setDogAltText(`This is a picture of a ${searchInput}`);
       setDogPic(image);
     } catch (error) {
       console.log("error");
@@ -54,10 +56,10 @@ function App() {
           <ImageDisplay
             imgSrc={dogPic.message}
             searchInput={searchInput}
-            role="displayDog"
+            dogAltText={dogAltText}
+            role="display dog picture"
           />
         )}
-        <button onClick={() => console.log(searchInput)}></button>
       </main>
     </>
   );

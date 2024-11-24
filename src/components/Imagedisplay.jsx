@@ -1,12 +1,8 @@
-const ImageDisplay = ({ imgSrc, searchInput }) => {
+const ImageDisplay = ({ imgSrc, searchInput, dogAltText }) => {
   return (
     <>
       <section className="image-display">
-        <img
-          className="dog-display"
-          src={imgSrc}
-          alt={`A picture of a ${searchInput}`}
-        />
+        <img className="dog-display" src={imgSrc} alt={dogAltText} />
       </section>
     </>
   );
