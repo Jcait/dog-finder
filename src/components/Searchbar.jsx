@@ -51,7 +51,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           onSelect={handleSelect}
           onHover={onHover}
           showNoResults={false}
-          placeholder="Great Dane, Dalmation, Chihuahua"
+          placeholder="Great Dane, Dalmatian, Chihuahua"
           fuseOptions={{ minMatchCharLength: 2 }}
           className="dog-search"
         />
