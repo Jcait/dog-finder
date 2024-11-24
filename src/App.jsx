@@ -13,7 +13,8 @@ function App() {
   const apiFormat = async (api) => {
     try {
       const image = await fetch(api).then((response) => response.json());
-      if (!image.ok) throw new Error("Request failed");
+      console.log(image.message);
+      if (image.code == "404") throw new Error("Request failed");
       setDogPic(image);
     } catch (error) {
       console.log("error");
