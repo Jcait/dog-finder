@@ -15,6 +15,7 @@ function App() {
       const image = await fetch(api).then((response) => response.json());
       console.log(image.message);
       if (image.code == "404") throw new Error("Request failed");
+      setIsError(false);
       setDogPic(image);
     } catch (error) {
       console.log("error");
