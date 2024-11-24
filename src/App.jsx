@@ -7,6 +7,7 @@ import ImageGet from "./components/ImageGet";
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [dogPic, setDogPic] = useState("");
+  const [isError, setError] = useState(true);
 
   // This takes the message received from image api and sets it as the state used for dog pic
   const apiFormat = async (api) => {
@@ -14,19 +15,22 @@ function App() {
       const image = await fetch(api).then((response) => response.json());
       setDogPic(image);
     } catch (error) {
+      setError(true);
       console.error(error);
     }
   };
 
   const handleClick = ({ string = searchInput }) => {
-    apiFormat(`https://dog.ceo/api/breed/${string}/images/random`);
+    string.length == 0
+      ? null
+      : apiFormat(`https://dog.ceo/api/breed/${string}/images/random`);
   };
 
   return (
     <>
       <main>
         {/* First section is for the search widget */}
-        <h1>DogFinder</h1>
+        <h1>Find a Dog</h1>
         <section className="searchbar" role="Search">
           <Searchbar
             searchInput={searchInput}
@@ -36,8 +40,7 @@ function App() {
           />
           <ImageGet handleClick={handleClick} />
         </section>
-        {/* Second Section for Image display */}
-        <ImageDisplay imgSrc={dogPic.message} />
+        {isError ? null : <ImageDisplay imgSrc={dogPic.message} />}
         <button onClick={() => console.log(searchInput)}></button>
       </main>
     </>

@@ -38,13 +38,13 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     setSearchInput(string.name.toLowerCase());
   };
 
-  const handleSelect = () => {
+  const handleSelect = (string) => {
     handleClick(searchInput);
   };
   return (
     <>
       <div className="search-container">
-        <h4>Find a dog</h4>
+        <h4>Search by dog breed</h4>
         <ReactSearchAutocomplete
           items={suggestions}
           onSearch={handleSearch}
