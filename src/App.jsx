@@ -27,7 +27,7 @@ function App() {
       <main>
         {/* First section is for the search widget */}
         <h1>DogFinder</h1>
-        <section className="placeholder">
+        <section className="searchbar" role="Search">
           <Searchbar
             searchInput={searchInput}
             setSearchInput={setSearchInput}

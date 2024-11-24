@@ -52,7 +52,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           onHover={onHover}
           showNoResults={false}
           fuseOptions={{ minMatchCharLength: 2 }}
-          className="searchbar"
+          className="dog-search"
         />
       </div>
     </>
