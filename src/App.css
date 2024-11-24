@@ -8,6 +8,11 @@
 
 body {
   background-color: aliceblue;
+  color: #213547;
+}
+
+button {
+  background-color: #f9f9f9;
 }
 
 .title {
@@ -37,9 +42,9 @@ body {
 
 .dog-display {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   aspect-ratio: 16 / 9;
-  width: 100%;
+  width: 50%;
 }
 
 .image-button {

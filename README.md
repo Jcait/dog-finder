@@ -2,7 +2,9 @@
 
 This mockup was created using React and Vite for the template and developed further.
 
-## Install
+A live preview using Netlify can be found [here](https://lighthearted-torrone-904573.netlify.app/)
+
+## Installation
 
 This can be installed easily with the following
 
@@ -18,6 +20,6 @@ A live preview server can also be run with:
 npm run dev
 ```
 
-# Features
+## Features
 
-Dogfinder can currently fetch images from the [Dog Api](https://dog.ceo/dog-api/) Either by inputting the breed name in the search bar or by selecting a breed in the suggestions dropdown
+Dogfinder can currently fetch images from the [Dog Api](https://dog.ceo/dog-api/). Either by inputting the breed name in the search bar or by selecting a breed in the suggestions dropdown

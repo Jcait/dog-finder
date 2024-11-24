@@ -57,7 +57,7 @@ function App() {
             role="displayDog"
           />
         )}
-        <button onClick={() => console.log(searchInput)}>CHeck</button>
+        <button onClick={() => console.log(searchInput)}></button>
       </main>
     </>
   );

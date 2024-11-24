@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 function Searchbar({ searchInput, setSearchInput, handleClick }) {
-  // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
+  // The autocomplete component requires an array of objects; when clearing the state, use an empty array
   const [suggestions, setSuggestions] = useState([]);
   const [searched, setSearched] = useState(false);
 
-  // Grabs the API once Searchbar loads and turns it into an array of suggestions for the
+  // Grabs the API once the search bar loads and turns it into an array of suggestions for the autocomplete component.
   useEffect(() => {
     const fetchDogSuggests = async () => {
       try {
@@ -34,7 +34,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     fetchDogSuggests();
   }, []);
 
-  // THis ensures the input is set first in handleSelect before fetching the API
+  // This ensures the input is set first in handleSelect before fetching the API.
   useEffect(() => {
     if (searched) {
       handleClick(searchInput);
@@ -42,8 +42,8 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     }
   }, [searched, searchInput, handleClick]);
 
-  //   This fires on every input, like onChange, string tracks the searchbars value
-  // Unsure if German Shepherd and Great Dane count as sub breeds, Since Great Dane is in the placeholder, I'm making a quick fix for it.
+  // This fires on every input, like onChange, string tracks the searchbars value
+  // Unsure if German Shepherd and Great Dane count as sub-breeds, since Great Dane is in the placeholder, I'm making a quick fix for it just in case.
   const handleSearch = (string) => {
     string == "German Shepherd"
       ? setSearchInput("germanshepherd")
@@ -72,7 +72,7 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
           onSelect={handleSelect}
           showNoResults={false}
           placeholder="Great Dane, Dalmatian, Chihuahua"
-          fuseOptions={{ minMatchCharLength: 2 }}
+          fuseOptions={{ minMatchCharLength: 2, threshold: 0 }}
           className="dog-search"
         />
       </div>
