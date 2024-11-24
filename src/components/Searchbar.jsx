@@ -4,7 +4,9 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 function Searchbar({ searchInput, setSearchInput, handleClick }) {
   // The auto complete components requires an Array of Obejcts, when clearing the state use an empty array
   const [suggestions, setSuggestions] = useState([]);
+  const [searched, setSearched] = useState(false);
 
+  // Grabs the API once Searchbar loads and
   useEffect(() => {
     const fetchDogSuggests = async () => {
       try {
@@ -27,32 +29,36 @@ function Searchbar({ searchInput, setSearchInput, handleClick }) {
     fetchDogSuggests();
   }, []);
 
+  useEffect(() => {
+    if (searched) {
+      handleClick(searchInput);
+      setSearched(false);
+    }
+  }, [searched, searchInput, handleClick]);
+
   //   This fires on every input, like onChange, string tracks the searchbars value
-  //   will be used to update state to fetch image
   const handleSearch = (string) => {
     setSearchInput(string.toLowerCase());
   };
-  // Updates the state with hover, letting handle click catch up
-  const onHover = (string) => {
-    console.log(string.name);
+
+  const handleSelect = (string) => {
     setSearchInput(string.name.toLowerCase());
+    setSearched(true);
   };
 
-  const handleSelect = () => {
-    handleClick(searchInput);
-  };
   return (
     <>
       <div className="search-container">
-        <h4>Find a dog</h4>
+        <h4>Search by dog breed</h4>
         <ReactSearchAutocomplete
           items={suggestions}
           onSearch={handleSearch}
           onSelect={handleSelect}
-          onHover={onHover}
           showNoResults={false}
+          placeholder="Great Dane, Dalmatian, Chihuahua"
           fuseOptions={{ minMatchCharLength: 2 }}
-          className="searchbar"
+          className="dog-search"
+          onBlur="test"
         />
       </div>
     </>

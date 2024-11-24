@@ -7,26 +7,35 @@ import ImageGet from "./components/ImageGet";
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [dogPic, setDogPic] = useState("");
+  const [isError, setIsError] = useState(false);
 
+  // This takes the message received from image api and sets it as the state used for dog pic
   const apiFormat = async (api) => {
     try {
       const image = await fetch(api).then((response) => response.json());
+      console.log(image.message);
+      if (image.code == "404") throw new Error("Request failed");
+      setIsError(false);
       setDogPic(image);
     } catch (error) {
+      console.log("error");
+      setDogPic("");
+      setIsError(true);
       console.error(error);
     }
   };
 
   const handleClick = ({ string = searchInput }) => {
-    apiFormat(`https://dog.ceo/api/breed/${string}/images/random`);
+    string.length == 0
+      ? null
+      : apiFormat(`https://dog.ceo/api/breed/${string}/images/random`);
   };
 
   return (
     <>
-      <main style={{ backgroundColor: "grey", width: "100%" }}>
-        {/* First section is for the search widget */}
-        <h1>DogFinder</h1>
-        <section className="placeholder">
+      <main>
+        <h1>Find a Dog</h1>
+        <section className="searchbar" role="Search">
           <Searchbar
             searchInput={searchInput}
             setSearchInput={setSearchInput}
@@ -35,9 +44,10 @@ function App() {
           />
           <ImageGet handleClick={handleClick} />
         </section>
-        {/* Second Section for Image display */}
-        <ImageDisplay imgSrc={dogPic.message} />
-        <button onClick={() => console.log(searchInput)}></button>
+        {isError ? null : !dogPic ? null : (
+          <ImageDisplay imgSrc={dogPic.message} />
+        )}
+        <button onClick={() => console.log(isError)}></button>
       </main>
     </>
   );

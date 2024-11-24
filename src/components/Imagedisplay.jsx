@@ -1,9 +1,7 @@
-import { useState } from "react";
-
 const ImageDisplay = ({ imgSrc }) => {
   return (
     <>
-      <section>
+      <section className="image-display">
         <img className="dog-display" src={imgSrc} />
       </section>
     </>
