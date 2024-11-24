@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+body {
+  background-color: aliceblue;
+}
+
 .searchbar {
   width: 80%;
 }

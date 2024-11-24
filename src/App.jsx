@@ -8,6 +8,7 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [dogPic, setDogPic] = useState("");
 
+  // This takes the message received from image api and sets it as the state used for dog pic
   const apiFormat = async (api) => {
     try {
       const image = await fetch(api).then((response) => response.json());
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      <main style={{ backgroundColor: "grey", width: "100%" }}>
+      <main>
         {/* First section is for the search widget */}
         <h1>DogFinder</h1>
         <section className="placeholder">
